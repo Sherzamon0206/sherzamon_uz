@@ -1,0 +1,209 @@
+
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Put your site title here -->
+  <title>
+Muhiddinov Sherzamon
+  </title>
+
+  <meta name="description" content="Add small description of yourslef.">
+  <!-- Add some coding keywords below, Ex: (React, CSS etc) -->
+  <meta name="keywords" content="Muhiddinov Sherzamon ,Python backend developper" />
+  <link rel="stylesheet" type="text/css" href="{% static "css/index.css"  %}">
+
+
+</head>
+
+<body>
+
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+</script>
+  <header class="header" role="banner" id="top">
+    <div class="row">
+      <nav class="nav" role="navigation">
+        <ul class="nav__items">
+          <li class="nav__item">
+            <a href="#"><img src="{%  static "img/github.svg"   %}" class="footer__social-image" alt="Github"></a>
+          </li>
+          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
+
+          <li class="nav__item">
+            <a href="#about" class="nav__link">About</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">Contact</a>
+
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__text-box row">
+      <div class="header__text">
+        <h1 style="color: #807d7d" class="heading-primary">
+          <!-- Replace the following name with your name -->
+          <span>{{ developer.name}}</span>
+        </h1>
+        <!-- Put a small paragraph about yourself -->
+        <h3 style="color: #808080">{{ developer.job}}</h3>
+        <a href="#contact" class="btn btn--pink">Get in touch</a>
+
+      </div>
+
+    </div>
+  </header>
+
+  <main role="main">
+
+    <!-- ***** Work ***** -->
+
+    <section class="work" id="work">
+      <div class="row">
+        <h2>My Work</h2>
+          {% for work in my_work %}
+        <div class="work__boxes">
+
+
+          <div class="work__box">
+            <div class="work__text">
+              <h3>{{ work.name}}</h3>
+              <p>
+                  {{work.description}}
+              </p>
+              <ul class="work__list">
+                  <li>{{ about.resume }}</li>
+                <li>{{ work.lang1 }}</li>
+                <li>{{ work.lang2 }}</li>
+                <li>{{ work.lang3 }}</li>
+                <li>{{ work.lang4 }}</li>
+                <li>{{ work.lang5 }}</li>
+                <li>{{ work.lang6 }}</li>
+              </ul>
+
+              <div class="work__links">
+                <a href="{{ work.link_site }}" target="_blank" class="link__text">
+                  Visit Site <span>&rarr;</span>
+                </a>
+                <a href="{{ work.link_github}}" title="View Source Code" target="_blank">
+                  <img src="{%  static   "img/github.svg"%}" class="work__code" alt="GitHub">
+                </a>
+              </div>
+            </div>
+            <div class="work__image-box">
+              <img src="{%  static  "img/project-1.png" %}" class="work__image" alt="Project 1" />
+            </div>
+          </div>
+
+
+        </div>
+          {% endfor %}
+      </div>
+    </section>
+
+
+
+    <section class="about" id="about">
+      <div class="row">
+        <h2>About Me</h2>
+        <div class="about__content">
+          <div class="about__text">
+            <!-- Replace the below paragraph with info about yourself -->
+            <p>
+                {{about.description}}
+            </p>
+            <!-- Provide a link to your resume -->
+            <a href="{{ file.resume.url }}" download="{{file.resume.url }}" class="btn">My Resume</a>
+
+          </div>
+
+          <div class="about__photo-container">
+            <!-- Add a nice photo of yourself -->
+            <img class="about__photo" src="{{about.img1.url}}" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ***** Contact ***** -->
+
+  <section class="contact" id="contact">
+    <div class="row">
+      <h2>Get in Touch</h2>
+      <div class="contact__info">
+        <p>
+            {{ about.description2 }}
+
+        </p>
+        <!-- Replace the email with yours -->
+        <a href="mailto:{{ about.mail}}" class="btn">{{ about.mail}}</a>
+        <a href="{{ about.telegram}}" class="btn">Telegram</a>
+        <a href="tel:{{ about.phone }}" class="btn">Phone</a>
+
+
+
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ***** Footer ***** -->
+
+  <footer role="contentinfo" class="footer">
+    <div class="row">
+      <!-- Update the links to point to your accounts -->
+      <ul class="footer__social-links">
+
+        <li class="footer__social-link-item">
+          <a href="{{ about.github}}" title="Link to Github Profile">
+            <img src="{%  static   "img/github.svg" %}" class="footer__social-image" alt="Github">
+          </a>
+        </li>
+
+        <li class="footer__social-link-item">
+          <a href=https://www.linkedin.com/in/nisar-hassan-naqvi-413466199/">
+            <img src="{%  static   "img/linkedin.svg" %}" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin">
+          </a>
+        </li>
+      </ul>
+
+      <!-- If you give me some credit by keeping the below paragraph, will be huge for me 😊 Thanks. -->
+
+
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" title="Back to Top">
+    <img src="{%  static   "img/arrow-up.svg" %}" alt="Back to Top" class="back-to-top__image"/>
+  </a>
+
+<script src="{%  static  "/js/index.js"  %}"></script>
+
+</body>
+
+</html>

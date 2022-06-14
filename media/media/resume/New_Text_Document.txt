@@ -1,0 +1,5 @@
+1 logist 
+2 aziz
+3 onam bazasini
+4 onam sayti
+5 telfon aksiya bot
